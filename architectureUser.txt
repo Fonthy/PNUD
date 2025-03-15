@@ -28,6 +28,7 @@ Routes
             input : none
             output : {
                 success : {
+            input : none
                     status: 200
                     data : {matricule, mame, lastName, fonction, type}
                 },
@@ -100,5 +101,8 @@ Routes
                     message: "Request error"
                 }
             }
-    }
+    },
+
+
+
     

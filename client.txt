@@ -1,0 +1,108 @@
+ Controllers
+    Client{
+        ->getAllClient()
+        ->modifyClient(CIN, mame, lastName, picUrl, DateOfbirth)
+        ->insertClient(CIN, mame, lastName, picUrl, DateOfbirth)
+        ->findClient(CIN)
+        ->deleteClient(CIN)
+    }
+
+
+
+Models
+    Client{
+        (CIN="", mame="", lastName="", picUrl="", DateOfbirth="",account ="")
+        ->getDataClient() 
+        ->modifyDataClient()
+        ->insertDataClient()
+        ->findDataClient()
+        ->deleteDataClient() 
+
+    }
+
+Routes
+    Client{
+        /Client/
+        ->getAllClient GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+                    message:"Here lists Client | Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             },
+
+        ->modifyClient PUT
+            input : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+            output:{
+                 success : {
+                    status: 200
+                    data : {}
+                    message :"modification Client succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+
+        ->insertClient POST 
+            input : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+            output :{
+                   success : {
+                    status: 200
+                    data : {}
+                    message :"Insert Client succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+
+        ->deleteClient DELETE
+            input : {CIN}
+            output : {
+                  success : {
+                    status: 200
+                    data : {}
+                    message :"Delete Client succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+
+        ->findClient GET 
+            input:{CIN}
+            output:{
+                   success : {
+                    status: 200
+                    data : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+                    message :"Here Client | Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            }
+        
+    }
+
+
+Privilege:
+    ->insertClient =>Client
+    ->getAllClient =>Admin
+    ->findClient =>Admin/Employee
+    ->deleteClient =>Client
