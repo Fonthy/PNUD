@@ -8,7 +8,7 @@
     }
 Models
     Recette{
-        (id_recette, nature, libelle, montant, periodocite)
+        (id_recette, nature, label, amount, periodicity)
         ->getAllRecette()
         ->modifyRecette()
         ->insertRecette()
@@ -47,7 +47,7 @@ Routes
                 }
              }   
         /Recette/insertRecette POST
-            input : {id_recette,nature,libelle,montant,periodocite}
+            input : {id_recette,nature,label,amount,periodicity}
             output : {
                 success : {
                     status: 200
@@ -79,7 +79,7 @@ Routes
             output : {
                 success : {
                     status: 200
-                    data: {id_recette,nature,libelle,montant,periodocite}
+                    data: {id_recette,nature,label,amount,periodicity}
                     message: "Request success"
                 },
                 error {
