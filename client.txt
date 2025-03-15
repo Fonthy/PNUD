@@ -104,5 +104,5 @@ Routes
 Privilege:
     ->insertClient =>Client
     ->getAllClient =>Admin
-    ->findClient =>Admin/Employee
+    ->findClient =>Admin
     ->deleteClient =>Client
