@@ -1,0 +1,104 @@
+ Controllers
+    User{
+        ->getAllUser(type = "Employee")
+        ->modifyUser(matricule, mame, lastName, fonction, type="Employee")
+        ->insertUser(matricule, mame, lastName, fonction, type="Employee")
+        ->findUser(type="Employee",matricule)
+        ->deleteUser(type="Employee",matricule) //Normally we do not delete data
+    }
+
+
+
+Models
+    User{
+        (matricule="", mame="", lastName="", fonction="", type="")
+        ->getDataUser() // 
+        ->modifyDataUser()
+        ->insertDataUser()
+        ->findDataUser()
+        ->deleteDataUser() //Normally we do not delete data
+
+    }
+
+
+Routes
+    Admin{
+        /Admin/
+        ->getAllUser GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {matricule, mame, lastName, fonction, type}
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }
+
+
+        ->modifyUser PUT
+            input : {matricule, mame, lastName, fonction, type}
+            output : {
+                success:{
+                    status:200
+                    data:{}
+                    message : "Update successfuly"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            }
+
+        ->insertUser POST
+            input : {matricule, mame, lastName, fonction, type}
+            output : {
+
+                success:{
+                    status:200
+                    data:{}
+                    message : "Insert succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+
+            }
+
+        ->findUser GET 
+            input : {type,matricule}
+            output:{
+                success:{
+                    status:200
+                    data:{matricule, mame, lastName, fonction, type}
+                    message : "Here|Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            }
+
+        ->deleteUser DELETE 
+            input:{type,matricule}
+            output:{
+                 success:{
+                    status:200
+                    data:{}
+                    message : "Delete succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            }
+    }
+    
