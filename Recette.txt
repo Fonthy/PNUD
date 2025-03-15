@@ -1,0 +1,91 @@
+ Controllers
+    Recette{
+        ->getAllRecette()
+        ->modifyRecette()
+        ->insertRecette()
+        ->deleteRecette()
+        ->findRecette(id_recette)
+    }
+Models
+    Recette{
+        (id_recette, nature, libelle, montant, periodocite)
+        ->getAllRecette()
+        ->modifyRecette()
+        ->insertRecette()
+        ->deleteRecette()
+        ->findRecette(id_recette)
+
+    }
+
+Routes
+    Recette{
+        /Recette/getAllRecette GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {matricule, mame, lastName, fonction, type}
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }
+        /Recette/modifyRecette POST
+            input : {id_recette}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Recette/insertRecette POST
+            input : {id_recette,nature,libelle,montant,periodocite}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Recette/deleteRecette POST
+            input : {id_recette}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Recette/findRecette POST
+            input : {id_recette}
+            output : {
+                success : {
+                    status: 200
+                    data: {id_recette,nature,libelle,montant,periodocite}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+    }

@@ -5,7 +5,7 @@
     }
 Models
     User{
-        (matricule, mame, lastName, fonction, type)
+        (matricule, name, lastName, fonction, type)
         ->getAllUser()
         ->modifyUser()
         ->insertUser()
