@@ -104,5 +104,5 @@ Privilege :
     ->insertAccount =>Client
     ->modifyAccount =>Client 
     ->getAllAccount =>Admin 
-    ->findAccount =>Admin/Employee
+    ->findAccount =>All 
     ->deleteAccount =>Client
