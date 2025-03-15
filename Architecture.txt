@@ -1,17 +1,30 @@
  Controllers
     User{
-        ->getDataUser()
-        ->
+        ->getAllUser()
+        ->modifyUser(matricule, mame, lastName, fonction, type)
+        ->insertUser(matricule, mame, lastName, fonction, type)
+        ->findUser(matricule)
+        ->deleteUser(matricule) //Normally we don't delete data
     }
 Models
     User{
         (matricule, mame, lastName, fonction, type)
-        ->getAllUser()
-        ->modifyUser()
-        ->insertUser()
-        ->findUser(matricule)
+        ->getDataUser()
+        ->modifyDataUser()
+        ->insertDataUser()
+        ->findDataUser()
+        ->deleteDataUser() //Normally we don't delete data
 
     }
+
+    Administrator extends User{
+        (matricule, mame, lastName, fonction, type)
+        ->givePrivilege(outreUser,privilege)
+    }
+    Enum privilege :
+     =>CRUD
+
+
 
 Routes
     User{
