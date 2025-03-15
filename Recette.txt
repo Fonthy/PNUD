@@ -5,6 +5,8 @@
         ->insertRecette()
         ->deleteRecette()
         ->findRecette(id_recette)
+        ->selectTotalFiscal()
+        ->selectTotalNonFiscal()
     }
 Models
     Recette{
@@ -14,7 +16,8 @@ Models
         ->insertRecette()
         ->deleteRecette()
         ->findRecette(id_recette)
-
+        ->selectTotalFiscal()
+        ->selectTotalNonFiscal()
     }
 
 Routes
@@ -24,7 +27,7 @@ Routes
             output : {
                 success : {
                     status: 200
-                    data : {matricule, mame, lastName, fonction, type}
+                    data : {id_recette, nature, label, amount, periodicity}
                 },
                 error {
                     status: 400
@@ -33,7 +36,7 @@ Routes
                 }
              }
         /Recette/modifyRecette POST
-            input : {id_recette}
+            input : {id_recette, nature, label, amount, periodicity'}
             output : {
                 success : {
                     status: 200
@@ -88,4 +91,32 @@ Routes
                     message: "Request error"
                 }
              }   
+        /Recette/selectTotalFiscal GET
+            input : {none}
+            output : {
+                success : {
+                    status: 200
+                    data: {totalFiscal}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }  
+        /Recette/selectTotalNonFiscal GET
+            input : {none}
+            output : {
+                success : {
+                    status: 200
+                    data: {totalNonFiscal}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }    
     }

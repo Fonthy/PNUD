@@ -1,0 +1,91 @@
+Controllers
+    Attribuer{
+        ->getAllAttribution()
+        ->modifyAttribution(matricule,id_recette,cin,date_attribution)
+        ->insertAttribution(matricule,id_recette,cin,date_attribution)
+        ->deleteAttribution(matricule,id_recette,cin)
+        ->findAttribution(matricule,id_recette,cin)
+    }
+Models
+    Attribuer{
+        (matricule,id_recette,cin,date_attribution)
+        ->getAllAttribution()
+        ->modifyAttribution()
+        ->insertAttribution()
+        ->deleteAttribution()
+        ->findAttribution(matricule,id_recette,cin)
+
+    }
+
+Routes
+    Attribuer{
+        /Attribuer/getAllAttribution GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {matricule,id_recette,cin,date_attribution}
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }
+        /Attribuer/modifyAttribution POST
+            input : {matricule,id_recette,cin,date_attribution}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Attribuer/insertAttribution POST
+            input : {matricule,id_recette,cin,date_attribution}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Attribuer/deleteAttribution POST
+            input : {matricule,id_recette,cin}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Attribuer/findAttribution POST
+            input : {matricule,id_recette,cin}
+            output : {
+                success : {
+                    status: 200
+                    data: {matricule,id_recette,cin,date_attribution}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+    }
