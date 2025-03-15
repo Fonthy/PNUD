@@ -1,0 +1,108 @@
+ Controllers
+    Account{
+        ->getAllAccount()
+        ->findAccount(CIN)
+        ->insertAccount(CIN,password)
+        ->modifyAccount(CIN,password)
+        ->deleteAccount(CIN)
+    }
+
+
+
+Models
+    Account{
+        (id,CIN="",password="")
+        ->getDataAccount()
+        ->findDataAccount()
+        ->insertDataAccount()
+        ->modifyDataAccount()
+        ->deleteDataAccount()
+
+    }
+
+Routes
+    Account{
+        /Account/
+        ->getAllAccount GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {CIN, password}
+                    message:"Here lists Accounts | Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+            
+        ->findAccount GET 
+            input : CIN 
+            output:{
+                success : {
+                    status: 200
+                    data : {CIN, password}
+                    message:"Here the Account | Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+
+        ->insertAccount POST 
+            input:{CIN,password}
+            output :{
+                success : {
+                    status: 200
+                    data : {}
+                    message:"Insert Account succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+
+        ->modifyAccount PUT 
+            input:{CIN,password}
+            output:{
+                success : {
+                    status: 200
+                    data : {}
+                    message:"Modification Account succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            },
+
+        ->deleteAccount DELETE
+            input : CIN 
+            output:{
+                success : {
+                    status: 200
+                    data : {}
+                    message:"delete Account succesfully"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+
+            }
+    }
+
+Privilege : 
+    ->insertAccount =>Client
+    ->modifyAccount =>Client 
+    ->getAllAccount =>Admin 
+    ->findAccount =>Admin/Employee
+    ->deleteAccount =>Client

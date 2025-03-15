@@ -11,7 +11,7 @@
 
 Models
     Emplacement{
-        (id,latitude,longitude)
+        (id="",latitude="",longitude="")
         ->getDataEmplacement() 
         ->modifyDataEmplacement()
         ->insertDataEmplacement()
