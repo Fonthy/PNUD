@@ -7,7 +7,7 @@ CREATE TABLE employe (
 );
 
 CREATE TABLE admin (
-    matricule PRIMARY KEY,
+    matricule VARCHAR(50) PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     prenom VARCHAR(255) NOT NULL
 );
@@ -25,8 +25,8 @@ CREATE TABLE recette (
     libelle VARCHAR(255) NOT NULL,
     montant FLOAT NOT NULL,
     periodicite VARCHAR(50) NOT NULL,
-    matricule INT NOT NULL,
-    FOREIGN KEY (matricule) references admin(matricule) ON UPDATE CASCADE ON DELETE CASCADE,
+    matricule VARCHAR(50) NOT NULL,
+    FOREIGN KEY (matricule) references admin(matricule) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE emplacement (
