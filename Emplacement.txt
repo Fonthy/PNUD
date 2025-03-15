@@ -21,4 +21,7 @@ Models
 
 Privilege:
     ->getAllEmplacement =>Admin
-    ->modifyDataEmplacement =>
+    ->modifyEmplacement => Employee
+    ->insertEmplacement => Employee
+    ->findEmplacement => Employee/Admin
+    ->deleteEmplacement =>Employee
