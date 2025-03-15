@@ -1,17 +1,15 @@
 CREATE TABLE employe (
     matricule VARCHAR(255) PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    prenoms VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
     fonction VARCHAR(255) NOT NULL,
-    type_employé VARCHAR(255) NOT NULL
+    type_employe VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE admin (
     matricule PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    prenom VARCHAR(255) NOT NULL,
-    id_recette INT NOT NULL,
-    FOREIGN KEY (id_recette) references recette(id_recette) ON UPDATE CASCADE ON DELETE CASCADE,
+    prenom VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE gerer (
@@ -26,13 +24,15 @@ CREATE TABLE recette (
     nature VARCHAR(255) NOT NULL,
     libelle VARCHAR(255) NOT NULL,
     montant FLOAT NOT NULL,
-    periodicite VARCHAR(50) NOT NULL
+    periodicite VARCHAR(50) NOT NULL,
+    matricule INT NOT NULL,
+    FOREIGN KEY (matricule) references admin(matricule) ON UPDATE CASCADE ON DELETE CASCADE,
 );
 
 CREATE TABLE emplacement (
+    id_emplacement VARCHAR(255) primary key,
     latitude VARCHAR(255),
-    longitude VARCHAR(255),
-    PRIMARY KEY(latitude,longitude)
+    longitude VARCHAR(255)
 );
 
 CREATE TABLE contribuable (
@@ -54,14 +54,17 @@ CREATE TABLE attribuer (
     matricule_employe VARCHAR(255),
     id_recette INT,
     cin VARCHAR(12),
-    id_payement VARCHAR(255) NOT NULL,
-    latitude VARCHAR(255) NOT NULL,
-    longitude VARCHAR(255) NOT NULL,
+    id_payement VARCHAR(255),
     date_attribution DATE NOT NULL,
     PRIMARY KEY(matricule_employe,id_recette,cin),
-    FOREIGN KEY (id_payement) references payement(id_payement) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (latitude) references emplacement(latitude) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (longitude) references emplacement(longitude) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (id_payement) references payement(id_payement) ON UPDATE CASCADE ON DELETE CASCADE
+);
+CREATE TABLE affecter (
+    matricule_employe VARCHAR(255),
+    id_recette INT,
+    cin VARCHAR(12),
+    id_emplacement VARCHAR(255),
+    PRIMARY KEY(matricule_employe,id_recette,cin,id_emplacement)
 );
 
 CREATE TABLE payement (

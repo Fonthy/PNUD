@@ -1,0 +1,183 @@
+ Controllers
+    MobileMoney{
+        ->getAllMobileMoney()
+        ->modifyMobileMoney()
+        ->insertMobileMoney()
+        ->findMobileMoney(id_payement)
+        ->totalRecette(period,label,nature)
+        ->totalBetweenTwo(date1,date2,label,nature)
+    }
+    Species{
+        ->getAllSpecies()
+        ->modifySpecies()
+        ->insertSpecies()
+        ->findSpecies(id_payement)
+        ->totalRecette(period,label,nature)
+        ->totalBetweenTwo(date1,date2,label,nature)
+    }
+Models
+    MobileMoney{
+        (id_payement, date, ref, operator)
+        ->getAllMobileMoney()
+        ->modifyMobileMoney()
+        ->insertMobileMoney()
+        ->findRecette(id_payement)
+        ->totalRecette(period,label,nature)
+        ->totalBetweenTwo(date1,date2,label,nature)
+    }
+    Species{
+        (id_payement, date, somme,rest)
+        ->getAllSpecies()
+        ->modifySpecies()
+        ->insertSpecies()
+        ->findRecette(id_payement)
+        ->totalRecette(period,label,nature)
+        ->totalBetweenTwo(date1,date2,label,nature)
+    }
+
+Routes
+    MobileMoney{
+        /MobileMoney/getAllMobileMoney GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {id_payement, date, ref, operator}
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }
+        /MobileMoney/modifyMobileMoney POST
+            input : {id_payement, date, ref, operator}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /MobileMoney/insertMobileMoney POST
+            input : {id_payement,date,ref,operator}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /MobileMoney/totalRecette POST
+            input : {period,total,nature}
+            output : {
+                success : {
+                    status: 200
+                    data: {total,swerve}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }  
+        /MobileMoney/totalBetweenTwo POST
+            input : {date1,date2,label,nature}
+            output : {
+                success : {
+                    status: 200
+                    data: {total,swerve}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }  
+
+
+    }
+    Species{
+        /Species/getAllSpecies GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {id_payement, date, somme,rest}
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }
+        /Species/modifySpecies POST
+            input : {id_payement, date, somme, rest}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Species/insertSpecies POST
+            input : {id_payement,date,somme, rest}
+            output : {
+                success : {
+                    status: 200
+                    data: {}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             } 
+        /Species/totalRecette POST
+            input : {period,total,nature}
+            output : {
+                success : {
+                    status: 200
+                    data: {total,swerve}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }   
+        /Species/totalBetweenTwo POST
+            input : {date1,date2}
+            output : {
+                success : {
+                    status: 200
+                    data: {total,swerve}
+                    message: "Request success"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }  
+   
+    }
