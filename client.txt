@@ -1,0 +1,56 @@
+ Controllers
+    Client{
+        ->getAllClient()
+        ->findClient(CIN)
+    }
+
+
+
+Models
+    Client{
+        (CIN="")
+        ->getDataClient() 
+        ->findDataClient()
+
+    }
+
+Routes
+    Client{
+        /Client/
+        ->getAllClient GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+                    message:"Here lists Client | Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             },
+
+
+        ->findClient GET 
+            input:{CIN}
+            output:{
+                   success : {
+                    status: 200
+                    data : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+                    message :"Here Client | Empty"
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+            }
+        
+    }
+
+
+Privilege:
+    ->getAllClient =>Admin
+    ->findClient =>Admin/Employee
