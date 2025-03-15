@@ -1,0 +1,31 @@
+ Controllers
+    User{
+        ->getDataUser()
+        ->
+    }
+Models
+    User{
+        (matricule, mame, lastName, fonction, type)
+        ->getAllUser()
+        ->modifyUser()
+        ->insertUser()
+        ->findUser(matricule)
+
+    }
+
+Routes
+    User{
+        /User/getAllUser GET
+            input : none
+            output : {
+                success : {
+                    status: 200
+                    data : {matricule, mame, lastName, fonction, type}
+                },
+                error {
+                    status: 400
+                    data: {}
+                    message: "Request error"
+                }
+             }
+    }
