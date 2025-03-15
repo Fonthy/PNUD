@@ -1,0 +1,24 @@
+ Controllers
+    Emplacement{
+        ->getAllEmplacement()
+        ->modifyEmplacement(id,latitude,longitude)
+        ->insertEmplacement(id,latitude,longitude)
+        ->findEmplacement(id)
+        ->deleteEmplacement(id)
+    }
+
+
+
+Models
+    Emplacement{
+        (id,latitude,longitude)
+        ->getDataEmplacement() 
+        ->modifyDataEmplacement()
+        ->insertDataEmplacement()
+        ->findDataEmplacement()
+        ->deleteDataEmplacement() 
+    }
+
+Privilege:
+    ->getAllEmplacement =>Admin
+    ->modifyDataEmplacement =>
