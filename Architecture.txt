@@ -1,11 +1,14 @@
  Controllers
     User{
-        ->getDataUser()
-        ->
+        ->getAllUser()
+        ->modifyUser(matricule, mame, lastName, fonction, type)
+        ->insertUser(matricule, mame, lastName, fonction, type)
+        ->findUser(matricule)
+        ->deleteUser(matricule) //Normally we don't delete data
     }
 Models
     User{
-        (matricule, name, lastName, fonction, type)
+        (matricule, mame, lastName, fonction, type)
         ->getAllUser()
         ->modifyUser()
         ->insertUser()
