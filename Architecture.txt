@@ -1,30 +1,20 @@
  Controllers
     User{
         ->getAllUser()
-        ->modifyUser(matricule, mame, lastName, fonction, type)
-        ->insertUser(matricule, mame, lastName, fonction, type)
+        ->modifyUser(matricule, name, lastName, fonction, type)
+        ->insertUser(matricule, name, lastName, fonction, type)
         ->findUser(matricule)
         ->deleteUser(matricule) //Normally we don't delete data
     }
 Models
     User{
-        (matricule, mame, lastName, fonction, type)
-        ->getDataUser()
-        ->modifyDataUser()
-        ->insertDataUser()
-        ->findDataUser()
-        ->deleteDataUser() //Normally we don't delete data
+        (matricule, name, lastName, fonction, type)
+        ->getAllUser()
+        ->modifyUser()
+        ->insertUser()
+        ->findUser(matricule)
 
     }
-
-    Administrator extends User{
-        (matricule, mame, lastName, fonction, type)
-        ->givePrivilege(outreUser,privilege)
-    }
-    Enum privilege :
-     =>CRUD
-
-
 
 Routes
     User{
@@ -33,7 +23,7 @@ Routes
             output : {
                 success : {
                     status: 200
-                    data : {matricule, mame, lastName, fonction, type}
+                    data : {matricule, name, lastName, fonction, type}
                 },
                 error {
                     status: 400
