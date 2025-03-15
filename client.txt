@@ -11,7 +11,7 @@
 
 Models
     Client{
-        (CIN="", mame="", lastName="", picUrl="", DateOfbirth="",account ="")
+        (CIN="", mame="", lastName="", picUrl="", DateOfbirth="",account ="",password="")
         ->getDataClient() 
         ->modifyDataClient()
         ->insertDataClient()
@@ -39,7 +39,7 @@ Routes
              },
 
         ->modifyClient PUT
-            input : {CIN, mame, lastName, picUrl, DateOfbirth,account}
+            input : {CIN, mame, lastName, picUrl, DateOfbirth,account,password=""}
             output:{
                  success : {
                     status: 200
@@ -103,6 +103,7 @@ Routes
 
 Privilege:
     ->insertClient =>Client
+    ->modifyClient =>Client
     ->getAllClient =>Admin
     ->findClient =>Admin
     ->deleteClient =>Client
